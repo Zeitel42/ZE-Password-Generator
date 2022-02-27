@@ -10,17 +10,14 @@ function userPasswordLength() {
 // validate length meets criteria
 
   if(userNum < 8 || userNum > 128){
-
     userPasswordLength();
-
   }else{
-
     passwordNum = userNum;
-
   }
   console.log(userNum + " local");
 }
 userPasswordLength();
+
 console.log(passwordNum + " extracted");
 
 function generatePassword(){
