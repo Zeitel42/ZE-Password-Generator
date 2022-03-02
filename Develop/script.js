@@ -86,7 +86,7 @@ function userPasswordLength() {
       prompNums();
     } charSpecial();
   }
-
+console.log(chosenCharacters);
 // // // PROMPT USER FOR SPECIAL CHARACTERS // //
 
   function charSpecial() {
@@ -99,30 +99,44 @@ function userPasswordLength() {
       window.alert("Sweet! Special characters letters will be part of the password.");
 
     }else if( specials === "N"){
-      window.alert("Ok. No special characters letters then.");
+
+      if(chosenCharacters.length === 0){
+        window.alert("You must choose at least one character type.");
+        bigLetters();
+      }else{
+        window.alert("Ok. No special characters letters then.");
+      }
 
     }else{
       window.alert("Please enter Y or N to choose.");
       charSpecial();
-
     }
-};
 
-// console.log(chosenCharacters)
+};
 
 // // GENERATE PASSWORD // //
 
 // generatePassword();
 
 function generatePassword(){
-  chosenCharacters = [];
+  password = "";
   userPasswordLength();
+
+  if(chosenCharacters === []){
+    window.alert("You must choose at least one character type.")
+    bigLetters();
+  }else{
   
-  for(var i = 0 ; i < passwordNum; i++){
-    var rando = Math.floor(Math.random()* chosenCharacters.length);
-    passArray.push(...chosenCharacters[rando]);
-    lastPass = passArray.join(" ");              // converts array into string without commas
-  }
+    for(var i = 0 ; i < passwordNum; i++){
+
+      var rando = Math.floor(Math.random()* chosenCharacters.length);
+
+      passArray.push(...chosenCharacters[rando]);
+      lastPass = passArray.join(" ");              // converts array into string without commas
+    
+    }
+
+}
   writePassword();
 }
 
@@ -131,22 +145,14 @@ function generatePassword(){
 function writePassword() {
 
   password = lastPass;
-  console.log(password);
   var passwordText = document.querySelector("#password");
-
-  
-  if(chosenCharacters === []){
-    window.alert("You must choose at least one character type.");
-    bigLetters();
-  }else{
-    passwordText.value = password;
-   
-  }
+  passwordText.value = password;
 
 }
 
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", generatePassword);
