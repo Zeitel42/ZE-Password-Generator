@@ -13,6 +13,8 @@ A password generator that provides a random set of characters from criteria chos
 
 https://zeitel42.github.io/ZE-Random-Character-Password-Generator/
 
+<img src="./Develop/assets/images/RanPassGenScrnSht.png">
+
 ## Contribution
 
 Contributions made by Zeitel42
