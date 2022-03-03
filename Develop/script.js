@@ -13,7 +13,7 @@ function userPasswordLength() {
   if(userNum < 8 || userNum > 128 || isNaN(userNum)){
     userPasswordLength();
   }else{
-    var confirmNum = window.confirm("You have chosen to have your password " + userNum + " characters long! Click OK to confirm.");
+    var confirmNum = window.confirm("You have chosen to have your password " + userNum + " characters long! Click OK to confirm or Cancel to choose a different number.");
     if(confirmNum){
       passwordNum = parseInt(userNum);       // converts string numbers into integers //
       bigLetters();
@@ -29,7 +29,7 @@ function userPasswordLength() {
 // // PROMPT USER FOR UPPERCASE LETTERS // //
 
   function bigLetters(){
-    var upperCase = window.prompt("Would you like uppercase letters in your password? Please enter Y or N");
+    var upperCase = window.prompt("Would you like uppercase letters in your password? Please enter Y or N.");
     
     if(upperCase === "Y"){
       var capitals = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -48,7 +48,7 @@ function userPasswordLength() {
   // // PROMPT USER FOR LOWERCASE LETTERS // //
 
   function littleLetters() {
-    var lowerCase = window.prompt("Would you like lowercase letters in your password? Please enter Y or N");
+    var lowerCase = window.prompt("Would you like lowercase letters in your password? Please enter Y or N.");
 
     if(lowerCase === "Y"){
 
@@ -69,7 +69,7 @@ function userPasswordLength() {
 // // // PROMPT USER FOR NUMBERS // //
 
   function prompNums(){
-    var numbers = window.prompt("Would you like numbers in your password?");
+    var numbers = window.prompt("Would you like numbers in your password? Please enter Y or N.");
 
     if(numbers === "Y"){
 
@@ -86,11 +86,11 @@ function userPasswordLength() {
       prompNums();
     } charSpecial();
   }
-console.log(chosenCharacters);
+
 // // // PROMPT USER FOR SPECIAL CHARACTERS // //
 
   function charSpecial() {
-    var specials = window.prompt("Would you like special characters in your password?");
+    var specials = window.prompt("Would you like special characters in your password? Please enter Y or N.");
 
     if(specials === "Y"){
 
@@ -119,7 +119,7 @@ console.log(chosenCharacters);
 // generatePassword();
 
 function generatePassword(){
-  password = "";
+  document.querySelector("#password").value = " ";
   userPasswordLength();
 
   if(chosenCharacters === []){
@@ -146,7 +146,7 @@ function writePassword() {
 
   password = lastPass;
   var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+  passwordText.value = "Your Random Password: \n \n" + password;
 
 }
 
