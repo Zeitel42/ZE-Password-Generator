@@ -22,107 +22,105 @@ function userPasswordLength() {
       userPasswordLength();
     }
   }
- 
 }
 
 // //  CHARACTER TYPES // //
 
 // // PROMPT USER FOR UPPERCASE LETTERS // //
 
-  function bigLetters(){
-    var upperCase = window.prompt("Would you like uppercase letters in your password? Please enter Y or N.");
+function bigLetters(){
+  var upperCase = window.prompt("Would you like uppercase letters in your password? Please enter Y or N.");
+  
+  if(upperCase === "Y"){
+    var capitals = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    chosenCharacters.push(...capitals);
+    window.alert("Great! Uppercase letters will be part of the password.");
+    littleLetters();
+    return
+  }else if(upperCase === "N"){
+    window.alert("Ok. No uppercase letters then.");
+    littleLetters();
+    return
+  }else{
+    window.alert("Please enter Y or N to choose.");
+    bigLetters();
+  } 
+}
+
+// // PROMPT USER FOR LOWERCASE LETTERS // //
+
+function littleLetters() {
+  var lowerCase = window.prompt("Would you like lowercase letters in your password? Please enter Y or N.");
+
+  if(lowerCase === "Y"){
+
+    var littles = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     
-    if(upperCase === "Y"){
-      var capitals = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-      chosenCharacters.push(...capitals);
-      window.alert("Great! Uppercase letters will be part of the password.");
-      littleLetters();
-      return
-    }else if(upperCase === "N"){
-      window.alert("Ok. No uppercase letters then.");
-      littleLetters();
-      return
-    }else{
-      window.alert("Please enter Y or N to choose.");
-      bigLetters();
-    } 
-  }
-
-  // // PROMPT USER FOR LOWERCASE LETTERS // //
-
-  function littleLetters() {
-    var lowerCase = window.prompt("Would you like lowercase letters in your password? Please enter Y or N.");
-
-    if(lowerCase === "Y"){
-
-      var littles = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-      
-      chosenCharacters = chosenCharacters.concat(littles);
-      window.alert("Wonderful! Lowercase letters will be part of the password.");
-      prompNums();
-      return
-    }else if(lowerCase === "N"){
-      window.alert("Ok. No lowercase letters then.");
-      prompNums();
-      return
-    }else{
-      window.alert("Please enter Y or N to choose.");
-      littleLetters();
-    } 
-  }
+    chosenCharacters = chosenCharacters.concat(littles);
+    window.alert("Wonderful! Lowercase letters will be part of the password.");
+    prompNums();
+    return
+  }else if(lowerCase === "N"){
+    window.alert("Ok. No lowercase letters then.");
+    prompNums();
+    return
+  }else{
+    window.alert("Please enter Y or N to choose.");
+    littleLetters();
+  } 
+}
 
 // // // PROMPT USER FOR NUMBERS // //
 
-  function prompNums(){
-    var numbers = window.prompt("Would you like numbers in your password? Please enter Y or N.");
+function prompNums(){
+  var numbers = window.prompt("Would you like numbers in your password? Please enter Y or N.");
 
-    if(numbers === "Y"){
+  if(numbers === "Y"){
 
-      var integers = ["0", "1","2", "3", "4", "5", "6", "7", "8", "9"]; 
+    var integers = ["0", "1","2", "3", "4", "5", "6", "7", "8", "9"]; 
 
-      chosenCharacters = chosenCharacters.concat(integers);
-      window.alert("Cool! Numbers letters will be part of the password.");
-      charSpecial()();
-      return
-    }else if(numbers === "N"){
-      window.alert("Ok. No numbers letters then.");
-      charSpecial();
-      return
-    }else{
-      window.alert("Please enter Y or N to choose.");
-      prompNums();
-    } 
-  }
+    chosenCharacters = chosenCharacters.concat(integers);
+    window.alert("Cool! Numbers letters will be part of the password.");
+    charSpecial()();
+    return
+  }else if(numbers === "N"){
+    window.alert("Ok. No numbers letters then.");
+    charSpecial();
+    return
+  }else{
+    window.alert("Please enter Y or N to choose.");
+    prompNums();
+  } 
+}
 
 // // // PROMPT USER FOR SPECIAL CHARACTERS // //
 
-  function charSpecial() {
-    var specials = window.prompt("Would you like special characters in your password? Please enter Y or N.");
+function charSpecial() {
+  var specials = window.prompt("Would you like special characters in your password? Please enter Y or N.");
 
-    if(specials === "Y"){
+  if(specials === "Y"){
 
-      var specialChars = ["!", "@", "#", "$", "%", "^", "&", "*", "<", ">"];  
-      chosenCharacters = chosenCharacters.concat(specialChars);
-      window.alert("Sweet! Special characters letters will be part of the password.");
+    var specialChars = ["!", "@", "#", "$", "%", "^", "&", "*", "<", ">"];  
+    chosenCharacters = chosenCharacters.concat(specialChars);
+    window.alert("Sweet! Special characters letters will be part of the password.");
+    rando();
+    return
+  }else if( specials === "N"){
+
+    if(chosenCharacters.length === 0){
+      window.alert("You must choose at least one character type.");
+      bigLetters();
+    }else{
+      window.alert("Ok. No special characters letters then.");
       rando();
       return
-    }else if( specials === "N"){
-
-      if(chosenCharacters.length === 0){
-        window.alert("You must choose at least one character type.");
-        bigLetters();
-      }else{
-        window.alert("Ok. No special characters letters then.");
-        rando();
-        return
-      }
-      
-    }else{
-      window.alert("Please enter Y or N to choose.");
-      charSpecial();
     }
-
-};
+    
+  }else{
+    window.alert("Please enter Y or N to choose.");
+    charSpecial();
+  }
+}
 
 function rando() {
 
@@ -135,8 +133,7 @@ function rando() {
     
   }
   writePassword();
-  return
-    
+  return  
 }
 
 
