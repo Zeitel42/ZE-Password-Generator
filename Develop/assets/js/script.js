@@ -114,8 +114,9 @@ function userPasswordLength() {
       }else{
         window.alert("Ok. No special characters letters then.");
         rando();
+        return
       }
-      return
+      
     }else{
       window.alert("Please enter Y or N to choose.");
       charSpecial();
