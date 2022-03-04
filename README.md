@@ -1,4 +1,4 @@
-# ZE-Password-Generator
+# ZE-Random-Character-Password-Generator
 
 ## Purpose 
 
