@@ -17,6 +17,7 @@ function userPasswordLength() {
     if(confirmNum){
       passwordNum = parseInt(userNum);       // converts string numbers into integers //
       bigLetters();
+      return
     }else{
       userPasswordLength();
     }
@@ -35,14 +36,16 @@ function userPasswordLength() {
       var capitals = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
       chosenCharacters.push(...capitals);
       window.alert("Great! Uppercase letters will be part of the password.");
-      
+      littleLetters();
+      return
     }else if(upperCase === "N"){
       window.alert("Ok. No uppercase letters then.");
-
+      littleLetters();
+      return
     }else{
       window.alert("Please enter Y or N to choose.");
       bigLetters();
-    } littleLetters();
+    } 
   }
 
   // // PROMPT USER FOR LOWERCASE LETTERS // //
@@ -56,14 +59,16 @@ function userPasswordLength() {
       
       chosenCharacters = chosenCharacters.concat(littles);
       window.alert("Wonderful! Lowercase letters will be part of the password.");
-      
+      prompNums();
+      return
     }else if(lowerCase === "N"){
       window.alert("Ok. No lowercase letters then.");
-
+      prompNums();
+      return
     }else{
       window.alert("Please enter Y or N to choose.");
       littleLetters();
-    } prompNums();
+    } 
   }
 
 // // // PROMPT USER FOR NUMBERS // //
@@ -77,14 +82,16 @@ function userPasswordLength() {
 
       chosenCharacters = chosenCharacters.concat(integers);
       window.alert("Cool! Numbers letters will be part of the password.");
-      
+      charSpecial()();
+      return
     }else if(numbers === "N"){
       window.alert("Ok. No numbers letters then.");
-
+      charSpecial();
+      return
     }else{
       window.alert("Please enter Y or N to choose.");
       prompNums();
-    } charSpecial();
+    } 
   }
 
 // // // PROMPT USER FOR SPECIAL CHARACTERS // //
@@ -97,7 +104,8 @@ function userPasswordLength() {
       var specialChars = ["!", "@", "#", "$", "%", "^", "&", "*", "<", ">"];  
       chosenCharacters = chosenCharacters.concat(specialChars);
       window.alert("Sweet! Special characters letters will be part of the password.");
-
+      rando();
+      return
     }else if( specials === "N"){
 
       if(chosenCharacters.length === 0){
@@ -105,8 +113,9 @@ function userPasswordLength() {
         bigLetters();
       }else{
         window.alert("Ok. No special characters letters then.");
+        rando();
       }
-
+      return
     }else{
       window.alert("Please enter Y or N to choose.");
       charSpecial();
@@ -114,30 +123,34 @@ function userPasswordLength() {
 
 };
 
+function rando() {
+
+  for(var i = 0 ; i < passwordNum; i++){
+
+    var rando = Math.floor(Math.random()* chosenCharacters.length);
+
+    passArray.push(...chosenCharacters[rando]);
+    lastPass = passArray.join(" ");              // converts array into string without commas
+    
+  }
+  writePassword();
+  return
+    
+}
+
+
+
 // // GENERATE PASSWORD // //
 
 // generatePassword();
 
 function generatePassword(){
-  document.querySelector("#password").value = " ";
-  userPasswordLength();
-
-  if(chosenCharacters === []){
-    window.alert("You must choose at least one character type.")
-    bigLetters();
-  }else{
-  
-    for(var i = 0 ; i < passwordNum; i++){
-
-      var rando = Math.floor(Math.random()* chosenCharacters.length);
-
-      passArray.push(...chosenCharacters[rando]);
-      lastPass = passArray.join(" ");              // converts array into string without commas
-    
-    }
-
-}
-  writePassword();
+  var clear = document.querySelector("#password");
+  if(clear.value != " "){
+    clear.value = " ";
+    userPasswordLength();
+  }
+  return
 }
 
 //Write password to the #password input
@@ -146,8 +159,8 @@ function writePassword() {
 
   password = lastPass;
   var passwordText = document.querySelector("#password");
-  passwordText.value = "Your Random Password: \n \n" + password;
-
+  passwordText.value = "Your Random Password: \n" + password;
+  return
 }
 
 
